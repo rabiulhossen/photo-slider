@@ -6,7 +6,7 @@ const reportedPostsId = [];
 const getLikedPosts = () => {
     return posts.filter((post) => likedPostsId.includes(post.id));
 };
-
+console.log(likedPostsId);
 const getReportedPosts = () => {
     return posts.filter((post) => reportedPostsId.includes(post.id));
 };
@@ -33,8 +33,9 @@ const displayContent = (text) => {
 const switchTab = (id) => {
     if (id === "posts") {
         document.getElementById("posts").style.display = "grid";
-        document.getElementById("liked").style.display = "grid";
-        document.getElementById("reported").style.display = "grid";
+        document.getElementById("liked").style.display = "none";
+        document.getElementById("reported").style.display = "none";
+        displayLikedPosts()
     } else if (id === "liked") {
         document.getElementById("liked").style.display = "block";
         document.getElementById("posts").style.display = "none";
@@ -62,7 +63,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
